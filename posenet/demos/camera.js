@@ -17,6 +17,7 @@
 import * as posenet from '@tensorflow-models/posenet';
 import dat from 'dat.gui';
 import Stats from 'stats.js';
+import nosePhoto from "./images/nose.png";
 
 import {drawBoundingBox, drawKeypoints, drawSkeleton, isMobile, toggleLoadingUI, tryResNetButtonName, tryResNetButtonText, updateTryResNetButtonDatGuiCss} from './demo_util';
 
@@ -255,6 +256,7 @@ function setupGui(cameras, net) {
   output.open();
 
 
+
   architectureController.onChange(function(architecture) {
     // if architecture is ResNet50, then show ResNet50 options
     updateGui();
@@ -423,7 +425,7 @@ function detectPoseInRealTime(video, net) {
     // For each pose (i.e. person) detected in an image, loop through the poses
     // and draw the resulting skeleton and keypoints if over certain confidence
     // scores
-    poses.forEach(({score, keypoints}) => {
+   /* poses.forEach(({score, keypoints}) => {
       if (score >= minPoseConfidence) {
         if (guiState.output.showPoints) {
           drawKeypoints(keypoints, minPartConfidence, ctx);
@@ -435,7 +437,32 @@ function detectPoseInRealTime(video, net) {
           drawBoundingBox(keypoints, ctx);
         }
       }
-    });
+    });*/
+
+
+    if (poses[0].keypoints[0] !== undefined){
+      if (poses[0].keypoints[0].score>0.6){
+  
+        const positionX = poses[0].keypoints[0].position.x
+        const positionY = poses[0].keypoints[0].position.y
+        console.log("nosek!")
+        console.log(positionX)
+        console.log(positionY)
+      
+        let canv = document.getElementById("output")
+        var kotek = canv.getContext("2d");
+        kotek.font = "30px Arial";
+        kotek.fillStyle = "aqua"
+        kotek.fillText("Hello World", positionX - 60, positionY);
+      
+      }
+    }
+    else{
+      console.log("cannot see anything here :(")
+    }
+
+    
+    
 
     // End monitoring code for frames per second
     stats.end();
