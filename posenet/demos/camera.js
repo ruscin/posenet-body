@@ -454,6 +454,8 @@ function detectPoseInRealTime(video, net) {
         kotek.font = "30px Arial";
         kotek.fillStyle = "aqua"
         kotek.fillText("Hello World", positionX - 60, positionY);
+
+ 
       
       }
     }
