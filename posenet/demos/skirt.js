@@ -9,38 +9,51 @@ var camera = new THREE.PerspectiveCamera(
   1000
 );
 
-var renderer = new THREE.WebGLRenderer({ alpha: false });
+var renderer = new THREE.WebGLRenderer({alpha:false});
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor (0xff0000, 1);
+renderer.setClearColor(0x3d3d3d,1)
 document.body.appendChild(renderer.domElement);
-renderer.outputEncoding = THREE.sRGBEncoding;
+
+var skirt;
 
 var loader = new GLTFLoader();
-loader.load(
-  "/models/dress/clothes_no_back.gltf",
-  function (gltf) {
-    console.log(gltf.scene.children[0]);
-    var skirt = gltf.scene.children[0];
-    skirt.scale.set(0.5, 0.5, 0.5);
-    scene.add(skirt);
-    skirt.position.z = -10;
 
+// Load a glTF resource
+loader.load(
+  // resource URL
+  "models/dress/clothes_no_back.gltf",
+  // called when the resource is loaded
+  function (gltf) {
     scene.add(gltf.scene);
+    skirt = gltf.scene;
+    console.log("skirt", skirt);
+    gltf.animations; // Array<THREE.AnimationClip>
+    gltf.scene; // THREE.Group
+    gltf.scenes; // Array<THREE.Group>
+    gltf.cameras; // Array<THREE.Camera>
+    gltf.asset; // Object
   },
-  undefined,
+  // called while loading is progressing
+  function (xhr) {
+    console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+  },
+  // called when loading has errors
   function (error) {
-    console.error(error);
+    console.log("An error happened");
+    console.log(error);
   }
 );
 
-camera.position.z = 100000;
+camera.position.z = 5;
 
 var animate = function () {
   requestAnimationFrame(animate);
 
   skirt.rotation.x += 0.01;
   skirt.rotation.y += 0.01;
+  skirt.scale.set(0.01,0.01,0.01);
 
   renderer.render(scene, camera);
 };
-//animate();
+
+animate();
