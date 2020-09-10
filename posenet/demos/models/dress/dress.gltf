@@ -1,6 +1,6 @@
 {
     "asset" : {
-        "generator" : "Khronos glTF Blender I/O v1.3.48",
+        "generator" : "Khronos glTF Blender I/O v1.1.46",
         "version" : "2.0"
     },
     "scene" : 0,
@@ -8,49 +8,19 @@
         {
             "name" : "Scene",
             "nodes" : [
-                0,
-                1,
-                2
+                0
             ]
         }
     ],
     "nodes" : [
         {
-            "name" : "Light",
-            "rotation" : [
-                0.16907575726509094,
-                0.7558803558349609,
-                -0.27217137813568115,
-                0.570947527885437
-            ],
-            "translation" : [
-                4.076245307922363,
-                5.903861999511719,
-                -1.0054539442062378
-            ]
-        },
-        {
-            "name" : "Camera",
-            "rotation" : [
-                0.483536034822464,
-                0.33687159419059753,
-                -0.20870360732078552,
-                0.7804827094078064
-            ],
-            "translation" : [
-                7.358891487121582,
-                4.958309173583984,
-                6.925790786743164
-            ]
-        },
-        {
             "mesh" : 0,
-            "name" : "Dress_Topsmesh",
+            "name" : "Dress_Cut_Out",
             "rotation" : [
                 0.7071068286895752,
                 0,
                 0,
-                0.7071067094802856
+                0.7071068286895752
             ]
         }
     ],
@@ -63,15 +33,27 @@
                 0
             ],
             "name" : "Topmat",
+            "normalTexture" : {
+                "index" : 0,
+                "scale" : 0,
+                "texCoord" : 0
+            },
             "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1,
+                    "texCoord" : 0
+                },
                 "metallicFactor" : 0.03999999910593033,
-                "roughnessFactor" : 0.5527864098548889
+                "metallicRoughnessTexture" : {
+                    "index" : 2,
+                    "texCoord" : 0
+                }
             }
         }
     ],
     "meshes" : [
         {
-            "name" : "Dress_Topsmesh",
+            "name" : "Topsmesh.001",
             "primitives" : [
                 {
                     "attributes" : {
@@ -85,19 +67,47 @@
             ]
         }
     ],
+    "textures" : [
+        {
+            "source" : 0
+        },
+        {
+            "source" : 1
+        },
+        {
+            "source" : 2
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "Andromeda_Top_Normal",
+            "uri" : "textures/Andromeda_Top_Normal.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "Andromeda_Top_Diffuse-Andromeda_Top_Opacity",
+            "uri" : "textures/Andromeda_Top_Diffuse-Andromeda_Top_Opacity.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "Andromeda_Top_Gloss",
+            "uri" : "textures/Andromeda_Top_Gloss.png"
+        }
+    ],
     "accessors" : [
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 2969,
+            "count" : 2843,
             "max" : [
                 47.381439208984375,
-                37.77631759643555,
+                37.77632141113281,
                 71.61199188232422
             ],
             "min" : [
                 -47.84904479980469,
-                -40.811649322509766,
+                -40.8116455078125,
                 -97.69996643066406
             ],
             "type" : "VEC3"
@@ -105,48 +115,48 @@
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 2969,
+            "count" : 2843,
             "type" : "VEC3"
         },
         {
             "bufferView" : 2,
             "componentType" : 5126,
-            "count" : 2969,
+            "count" : 2843,
             "type" : "VEC2"
         },
         {
             "bufferView" : 3,
             "componentType" : 5123,
-            "count" : 15438,
+            "count" : 14649,
             "type" : "SCALAR"
         }
     ],
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 35628,
+            "byteLength" : 34116,
             "byteOffset" : 0
         },
         {
             "buffer" : 0,
-            "byteLength" : 35628,
-            "byteOffset" : 35628
+            "byteLength" : 34116,
+            "byteOffset" : 34116
         },
         {
             "buffer" : 0,
-            "byteLength" : 23752,
-            "byteOffset" : 71256
+            "byteLength" : 22744,
+            "byteOffset" : 68232
         },
         {
             "buffer" : 0,
-            "byteLength" : 30876,
-            "byteOffset" : 95008
+            "byteLength" : 29298,
+            "byteOffset" : 90976
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 125884,
-            "uri" : "skirt.bin"
+            "byteLength" : 120276,
+            "uri" : "clothes_no_back.bin"
         }
     ]
 }
