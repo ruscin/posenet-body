@@ -21,8 +21,11 @@ import nosePhoto from "./images/nose.png";
 
 import {drawBoundingBox, drawKeypoints, drawSkeleton, isMobile, toggleLoadingUI, tryResNetButtonName, tryResNetButtonText, updateTryResNetButtonDatGuiCss} from './demo_util';
 
-const videoWidth = 600;
-const videoHeight = 500;
+let videoWidth = window.innerWidth;
+let videoHeight = window.innerHeight;
+
+
+
 const stats = new Stats();
 
 /**

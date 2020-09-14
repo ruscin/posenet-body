@@ -9,13 +9,14 @@ var camera = new THREE.PerspectiveCamera(
   1000
 );
 
-var renderer = new THREE.WebGLRenderer({alpha:false});
+var renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x3d3d3d,1)
+renderer.setClearColor(0x000000, 0); // the default
 document.body.appendChild(renderer.domElement);
 
 var skirt;
-
+var light = new THREE.AmbientLight(0x404040, 12);
+scene.add(light);
 var loader = new GLTFLoader();
 
 // Load a glTF resource
@@ -49,9 +50,7 @@ camera.position.z = 5;
 var animate = function () {
   requestAnimationFrame(animate);
 
-  skirt.rotation.x += 0.01;
-  skirt.rotation.y += 0.01;
-  skirt.scale.set(0.01,0.01,0.01);
+  skirt.scale.set(0.01, 0.01, 0.01);
 
   renderer.render(scene, camera);
 };
