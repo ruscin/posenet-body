@@ -27,7 +27,6 @@ loader.load(
   function (gltf) {
     scene.add(gltf.scene);
     skirt = gltf.scene;
-    console.log("skirt", skirt);
     gltf.animations; // Array<THREE.AnimationClip>
     gltf.scene; // THREE.Group
     gltf.scenes; // Array<THREE.Group>
@@ -47,12 +46,20 @@ loader.load(
 
 camera.position.z = 5;
 
-var animate = function () {
-  requestAnimationFrame(animate);
 
-  skirt.scale.set(0.01, 0.01, 0.01);
+
+
+
+export function setPosition(x, y) {
+  console.log("x", x);
+  console.log(y);
+}
+
+export function animate() {
+  requestAnimationFrame(animate);
+  skirt.position.x = 4;
+  skirt.rotation.y = 0.001;
+  skirt.scale.set(0.02, 0.02, 0.02);
 
   renderer.render(scene, camera);
-};
-
-animate();
+}
