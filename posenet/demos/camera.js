@@ -30,8 +30,8 @@ import {
   updateTryResNetButtonDatGuiCss,
 } from "./demo_util";
 
-let videoWidth = window.innerWidth;
-let videoHeight = window.innerHeight;
+let videoWidth = 1000;
+let videoHeight = 900;
 const canv = document.getElementById("output");
 const kotek = canv.getContext("2d");
 const stats = new Stats();
@@ -331,8 +331,8 @@ function setupGui(cameras, net) {
  * Sets up a frames per second panel on the top-left of the window
  */
 function setupFPS() {
-  stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-  document.getElementById("main").appendChild(stats.dom);
+  //stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+  //document.getElementById("main").appendChild(stats.dom);
 }
 
 /**
@@ -489,37 +489,39 @@ function detectPoseInRealTime(video, net) {
       }
     });
 
-    if (poses[0].keypoints[0] !== undefined) {
-      if (poses[0].keypoints[0].score > 0.6) {
-        //console.log(poses[0].keypoints);
-        // 5 left shoulder, 6 right shoulder, 13 left knee, 14 right knee, 15 left ankle, 16 right ankle
+    if (typeof poses !== "undefined" && poses.length > 0) {
+      if (typeof poses[0].keypoints[0] != "undefined") {
+        if (poses[0].keypoints[0].score > 0.6) {
+          //console.log(poses[0].keypoints);
+          // 5 left shoulder, 6 right shoulder, 13 left knee, 14 right knee, 15 left ankle, 16 right ankle
+          //MATH for clothes
+          const width =
+            poses[0].keypoints[6].position.x - poses[0].keypoints[5].position.x;
+          const height =
+            poses[0].keypoints[16].position.y -
+            poses[0].keypoints[6].position.y;
+          const positionX = poses[0].keypoints[5].position.x;
+          const positionY = poses[0].keypoints[5].position.y;
 
-        const width =
-          poses[0].keypoints[6].position.x - poses[0].keypoints[5].position.x;
-        const heigth =
-          poses[0].keypoints[16].position.y - poses[0].keypoints[6].position.y;
-        const positionX = poses[0].keypoints[5].position.x;
-        const positionY = poses[0].keypoints[5].position.y;
-        // console.log("szerokosc", width);
-        //console.log("wysokosc", heigth);
+          var e = document.getElementById("selectClothes");
 
-        counter++;
-        if (counter > 100) {
+          var chosenCloth = e.options[e.selectedIndex].text;
+
           drawClothes(
             image,
             positionX,
             positionY,
             width,
-            heigth,
-            "duza_sukienka"
+            height,
+            chosenCloth
           );
-        } else {
-          drawClothes(image, positionX, positionY, width, heigth, "sukienka");
         }
+      } else {
+        console.log("cannot see anything here :(");
       }
-    } else {
-      console.log("cannot see anything here :(");
     }
+
+    /* */
 
     // End monitoring code for frames per second
     stats.end();
@@ -529,7 +531,6 @@ function detectPoseInRealTime(video, net) {
 
   poseDetectionFrame();
 }
-let counter = 0;
 
 const drawClothes = (image, positionX, positionY, width, height, name) => {
   let drawingPositionX = positionX,
@@ -541,14 +542,14 @@ const drawClothes = (image, positionX, positionY, width, height, name) => {
     case "sukienka":
       image.src = "./images/dress.png";
       drawingPositionX -= 80;
-      drawingPositionY -= 35;
+      drawingPositionY -= 25;
       drawingWidth *= 2.5;
 
       break;
     case "duza_sukienka":
       image.src = "./images/nose.png";
-      drawingPositionX -= 165;
-      drawingPositionY -= 20;
+      drawingPositionX -= 170;
+      drawingPositionY -= 15;
       drawingWidth *= 4.25;
       drawingHeight *= 1.1;
 

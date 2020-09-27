@@ -1,0 +1,162 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.1.46",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Dress_Cut_Out",
+            "rotation" : [
+                0.7071068286895752,
+                0,
+                0,
+                0.7071068286895752
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "Topmat",
+            "normalTexture" : {
+                "index" : 0,
+                "scale" : 0,
+                "texCoord" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0.03999999910593033,
+                "metallicRoughnessTexture" : {
+                    "index" : 2,
+                    "texCoord" : 0
+                }
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Topsmesh.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "source" : 0
+        },
+        {
+            "source" : 1
+        },
+        {
+            "source" : 2
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "Andromeda_Top_Normal",
+            "uri" : "textures/Andromeda_Top_Normal.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "Andromeda_Top_Diffuse-Andromeda_Top_Opacity",
+            "uri" : "textures/Andromeda_Top_Diffuse-Andromeda_Top_Opacity.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "Andromeda_Top_Gloss",
+            "uri" : "textures/Andromeda_Top_Gloss.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 2843,
+            "max" : [
+                47.381439208984375,
+                37.77632141113281,
+                71.61199188232422
+            ],
+            "min" : [
+                -47.84904479980469,
+                -40.8116455078125,
+                -97.69996643066406
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 2843,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 2843,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 14649,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 34116,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 34116,
+            "byteOffset" : 34116
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 22744,
+            "byteOffset" : 68232
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 29298,
+            "byteOffset" : 90976
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 120276,
+            "uri" : "clothes_no_back.bin"
+        }
+    ]
+}
