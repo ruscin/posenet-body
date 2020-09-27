@@ -33,7 +33,7 @@ import {
 let videoWidth = 1000;
 let videoHeight = 900;
 const canv = document.getElementById("output");
-const kotek = canv.getContext("2d");
+const clothesCanvas = canv.getContext("2d");
 const stats = new Stats();
 var image = new Image();
 
@@ -507,18 +507,13 @@ function detectPoseInRealTime(video, net) {
 
           var chosenCloth = e.options[e.selectedIndex].text;
 
-          drawClothes(
-            image,
-            positionX,
-            positionY,
-            width,
-            height,
-            chosenCloth
-          );
+          drawClothes(image, positionX, positionY, width, height, chosenCloth);
         }
       } else {
         console.log("cannot see anything here :(");
       }
+    } else {
+      drawClothes(image, 200, 200, 700, 700, "outline");
     }
 
     /* */
@@ -552,11 +547,21 @@ const drawClothes = (image, positionX, positionY, width, height, name) => {
       drawingPositionY -= 15;
       drawingWidth *= 4.25;
       drawingHeight *= 1.1;
+      break;
+    case "outline":
+      image.src = "./images/outline.png";
+      drawingPositionX += 110;
+      drawingPositionY -= 0;
+      drawingWidth *= 0.52;
+      drawingHeight *= 0.78;
 
-    default:
-      console.log("nie znaleziono obiektu o danej nazwie");
+      clothesCanvas.font = "40px Arial";
+      clothesCanvas.fillStyle = "red";
+      clothesCanvas.textAlign = "center";
+      clothesCanvas.fillText("Ustaw się w wyznaczonym obszarze", 500, 150);
+      break;
   }
-  kotek.drawImage(
+  clothesCanvas.drawImage(
     image,
     drawingPositionX,
     drawingPositionY,
